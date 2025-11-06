@@ -59,6 +59,18 @@ function somma(a , b){
 
 const longBooks = books.filter(b => b.pages > 300)
 console.log(longBooks)
+//Creare un array (longBooksTitles) che contiene solo i titoli dei libri contenuti in longBooks.
 
 const longBooksTitles = longBooks.map(l => l.title)
 console.log(longBooksTitles)
+
+
+/*Snack 2 - Il primo libro scontato
+Creare un array (availableBooks) che contiene tutti i libri disponibili.
+Crea un array (discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e arrotonda al centesimo)
+Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi).*/
+
+
+//Creare un array (availableBooks) che contiene tutti i libri disponibili.
+const availableBooks = books.filter(b => b.available === true)
+console.log(availableBooks)
