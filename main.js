@@ -59,3 +59,6 @@ function somma(a , b){
 
 const longBooks = books.filter(b => b.pages > 300)
 console.log(longBooks)
+
+const longBooksTitles = longBooks.map(l => l.title)
+console.log(longBooksTitles)
