@@ -113,3 +113,11 @@ const authors = books.map(b => {
 })
 
 console.log(authors)
+
+//Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
+//userò il metodo every
+
+const areAuthorsAdults = authors.every(a => a.age > 18)
+
+console.log(areAuthorsAdults)
+// mi ritorna come valore un false perchè Alice ha 17 anni quindi è giusto 
