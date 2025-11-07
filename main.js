@@ -161,19 +161,23 @@ Testala con l’array [2, 13, 7, 21, 19] .*/
 const ids = [2, 13, 7, 21, 19] 
 //la mia idea per ora è di ottenere i libri creando un funzione asincrona in cui do in pasto gli id e tramite un map di questì sull'url base ottengo i libri con gli id presenti nell'array
 const getBooks = async(ids) =>{
-	let dataPromise = []
-	const datas =  ids.map(id =>
+	
+
+	const Promises =  ids.map(id =>
 	fetch(`http://localhost:3333/books/${id}`)
 	 	.then(res => res.json())
-	 	.then(obj => console.log(obj))
+	 	.then(obj => obj)
 		.catch(err => console.error(err) )
 	)
+	//quindi ora che ho restituito obj che sarebbero le promises tutte fetchate posso darle in pasto a promise.all 
 	
-	return datas
+	return await Promise.all(Promises)
+
 } 
 
 
 
 (async()=>{
-	getBooks(ids)
+	await getBooks(ids)
+	console.log(getBooks(ids))
 })()
