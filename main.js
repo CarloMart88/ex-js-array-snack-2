@@ -115,7 +115,7 @@ const authors = books.map(b => {
 console.log(authors)
 
 //Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
-//userò il metodo every che ritorna sempre un valore booleano
+//userò il metodo every  che ritorna sempre un valore booleano
 
 const areAuthorsAdults = authors.every(a => a.age > 18)
 
@@ -131,4 +131,27 @@ const authorsAge = authors.sort((a , b ) =>{
 }) 
 
 console.log(authorsAge)
+
+
+/*Snack 4 - Calcola l’età media
+Creare un array (ages) che contiene le età degli autori dei libri.
+
+Calcola la somma delle età (agesSum) usando reduce.
+Stampa in console l’età media degli autori dei libri.*/
+
+
+//Creare un array (ages) che contiene le età degli autori dei libri.
+const ages = authors.map(a => a.age)
+console.log(ages)
+
+//Calcola la somma delle età (agesSum) usando reduce.
+
+const agesSum = ages.reduce((acc , val) =>{ 
+	return acc + val //accumulatore parte da 0 e si aggiunge al valore dei vari indici dell'array ages
+}, 0)
+
+//Stampa in console l’età media degli autori dei libri.*/
+
+console.log(agesSum / ages.length)
+
 
