@@ -77,9 +77,13 @@ console.log(availableBooks)
 
 //Crea un array (discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e arrotonda al centesimo)
 
-const discountedBooks = availableBooks.map(r =>{ ((r.price.replace("€","")/100)*80 )
-.toFixed(2)
-.replace(/$/ , "€")})
+const discountedBooks = availableBooks.map(r =>{  
+	
+	return ((r.price.replace("€","")/100)*80 )
+	.toFixed(2)
+	.replace(/$/ , "€")
+	
+})
 /* in questo caso ho usato il metodo replace prima per togliere il simbolo dell'euro per poi fare la divisione
 successivamente con toFixed(2) ho arrotondato al centesimo e ritornare una stringa 
 con la regex /$/ di replace ho reinserito a tutti i valori di nuovo il simbolo €
@@ -87,11 +91,4 @@ con la regex /$/ di replace ho reinserito a tutti i valori di nuovo il simbolo �
 console.log(discountedBooks)
 
 
-
-/*
-const result = a.price
-	result = result.replace("€" , "")
-	const discount = (result / 100 )* 80
-	discount.replace("" , "€")
-	return discount
-	((a.price.replace("€", "")/100 )* 80)*/
+//Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi).
