@@ -183,3 +183,37 @@ const getBooks = async(ids) =>{
 	//posso vedere così risolto
 	console.log(books)
 })()
+
+
+/* Snack 6 (Bonus) - Ordina i libri
+Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
+Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
+Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.*/
+
+//Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
+const areThereAvailableBooks = books.filter(b => b.available)
+
+console.log(areThereAvailableBooks)
+
+//Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
+const booksByPrice = books.sort((a , b) =>{
+	
+	function cleanPrice(x){
+
+		return x.replace("€", "") 
+	}
+
+	let result = cleanPrice(a.price) - cleanPrice(b.price)
+
+	return result
+
+})
+
+console.log(booksByPrice)
+
+
+//Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.*/
+
+booksByPrice.sort((a , b) => b.available - a.available)
+
+console.log(booksByPrice)
