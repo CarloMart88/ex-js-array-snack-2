@@ -178,6 +178,8 @@ const getBooks = async(ids) =>{
 
 
 (async()=>{
-	await getBooks(ids)
-	console.log(getBooks(ids))
+	//chiudo in una costante await getBooks(ids)
+	const books = await getBooks(ids)
+	//posso vedere così risolto il bonus!
+	console.log(books)
 })()
