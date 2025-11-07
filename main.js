@@ -115,9 +115,20 @@ const authors = books.map(b => {
 console.log(authors)
 
 //Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
-//userò il metodo every
+//userò il metodo every che ritorna sempre un valore booleano
 
 const areAuthorsAdults = authors.every(a => a.age > 18)
 
 console.log(areAuthorsAdults)
 // mi ritorna come valore un false perchè Alice ha 17 anni quindi è giusto 
+
+/**Ordina l’array authors in base all’età, senza creare un nuovo array.
+(se areAuthorsAdult è true, ordina in ordine crescente, altrimenti in ordine decrescente)
+Userò il metodo sort che accetta due parametri dato che è tornato un valore false ordinerò l'array in ordine decrescente */
+
+const authorsAge = authors.sort((a , b ) =>{
+	return b.age - a.age
+}) 
+
+console.log(authorsAge)
+
