@@ -126,11 +126,11 @@ console.log(areAuthorsAdults)
 (se areAuthorsAdult è true, ordina in ordine crescente, altrimenti in ordine decrescente)
 Userò il metodo sort che accetta due parametri dato che è tornato un valore false ordinerò l'array in ordine decrescente */
 
-const authorsAge = authors.sort((a , b ) =>{
+authors.sort((a , b ) =>{
 	return b.age - a.age
 }) 
 
-console.log(authorsAge)
+console.log(authors)
 
 
 /*Snack 4 - Calcola l’età media
@@ -180,6 +180,6 @@ const getBooks = async(ids) =>{
 (async()=>{
 	//chiudo in una costante await getBooks(ids)
 	const books = await getBooks(ids)
-	//posso vedere così risolto il bonus!
+	//posso vedere così risolto
 	console.log(books)
 })()
