@@ -192,6 +192,7 @@ Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibi
 
 //Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
 const areThereAvailableBooks = books.some(b => b.available)
+//devo restituire un valore booleano quindi per forza devo usare o every o some !!
 
 console.log(areThereAvailableBooks)
 
@@ -217,3 +218,19 @@ console.log(booksByPrice)
 booksByPrice.sort((a , b) => b.available - a.available)
 
 console.log(booksByPrice)
+
+/*Snack 7 (Bonus) - Analizza i tag
+Usa reduce per creare un oggetto (tagCounts) che conta quante volte ogni tag viene usato tra i libri.
+*/
+
+const tagCounts = books.reduce((acc, b) => {
+  b.tags.forEach(tag => {
+    if (acc[tag]) {
+      acc[tag]++;
+    } else {
+      acc[tag] = 1;
+    }
+  });
+  return acc;
+}, {});
+console.log(tagCounts);
