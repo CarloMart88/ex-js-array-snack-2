@@ -161,17 +161,19 @@ Testala con l’array [2, 13, 7, 21, 19] .*/
 const ids = [2, 13, 7, 21, 19] 
 //la mia idea per ora è di ottenere i libri creando un funzione asincrona in cui do in pasto gli id e tramite un map di questì sull'url base ottengo i libri con gli id presenti nell'array
 const getBooks = async(ids) =>{
-const datas =  ids.map(id =>
+	let dataPromise = []
+	const datas =  ids.map(id =>
 	fetch(`http://localhost:3333/books/${id}`)
-	 .then(res => res.json())
-	 .then(obj => console.log(obj))
-	.catch(err => console.error(err) ))
+	 	.then(res => res.json())
+	 	.then(obj => console.log(obj))
+		.catch(err => console.error(err) )
+	)
+	
 	return datas
-
 } 
 
 
 
 (async()=>{
-	console.log(getBooks(ids))
+	getBooks(ids)
 })()
