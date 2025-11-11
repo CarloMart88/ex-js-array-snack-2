@@ -77,12 +77,13 @@ console.log(availableBooks)
 
 //Crea un array (discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e arrotonda al centesimo)
 
-const discountedBooks = availableBooks.map(r =>{  
-	
-	return ((r.price.replace("€","")/100)*80 )
-	.toFixed(2)
-	.replace(/$/ , "€")
-	
+const discountedBooks = availableBooks.map(d =>{  
+	const priceClean = parseFloat(d.price.replace("€",""))
+	const finalPrice = (priceClean * 0.8).toFixed(2)
+	return {
+		...d,
+		price:`${finalPrice}€`
+	}
 })
 /* in questo caso ho usato il metodo replace prima per togliere il simbolo dell'euro per poi fare la divisione
 successivamente con toFixed(2) ho arrotondato al centesimo e ritornare una stringa 
@@ -94,7 +95,8 @@ console.log(discountedBooks)
 //Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi).
 
 const fullPricedBook = discountedBooks.find(d => {
-	return d
+	const priceClean = parseFloat(d.price.replace("€",""))
+	return priceClean % 1 === 0
 })
 
 console.log(fullPricedBook)
@@ -166,7 +168,6 @@ const getBooks = async(ids) =>{
 	const Promises =  ids.map(id =>
 	fetch(`http://localhost:3333/books/${id}`)
 	 	.then(res => res.json())
-	 	.then(obj => obj)
 		.catch(err => console.error(err) )
 	)
 	//quindi ora che ho restituito obj che sarebbero le promises tutte fetchate posso darle in pasto a promise.all 
@@ -215,7 +216,13 @@ console.log(booksByPrice)
 
 //Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.*/
 
-booksByPrice.sort((a , b) => b.available - a.available)
+booksByPrice.sort((a , b) =>  {
+	function available(x) {
+		x.available = true ? x.available = 1 : x.available = 0
+		return x.available
+	}
+	return available(a.available) - available(b.available)
+})
 
 console.log(booksByPrice)
 
